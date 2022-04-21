@@ -3,9 +3,15 @@ package main
 import (
 	"fmt"
 	"net/http"
+	"os"
 )
 
 func main() {
+
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "50092"
+	}
 
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		fmt.Fprintln(w, "Hello World")
@@ -19,6 +25,6 @@ func main() {
 		fmt.Fprintln(w, "ok")
 	})
 
-	fmt.Println("50092 application started and listening on port 50092")
-	http.ListenAndServe(":50092", nil)
+	fmt.Println("application started and listening on port ", port)
+	http.ListenAndServe(":"+port, nil)
 }
