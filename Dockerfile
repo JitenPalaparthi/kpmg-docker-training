@@ -14,4 +14,6 @@ RUN touch sample
 
 RUN echo "hello world" >sample
 
-
+# Install python in ubuntu
+# Check steps how to install python on ubuntu
+# the automate those steps

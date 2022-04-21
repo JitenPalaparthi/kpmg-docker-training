@@ -165,4 +165,16 @@
 
 - To build if the docker file name is Dockerfile
 
-```docker build . -t jpalaparthi/myubuntu```
+```docker build . -t jpalaparthi/myubuntu``` 
+
+- To build image with tag
+
+```docker build . -t jpalaparthi/myubuntu:v01```
+
+### To push image to docker hub or any registered container registry
+
+```docker push jpalaparthi/myubuntu```
+
+- puch an image with tag
+
+```docker push jpalaparthi/myubuntu:v01```
