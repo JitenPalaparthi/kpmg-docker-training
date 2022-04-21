@@ -13,16 +13,17 @@ func main() {
 		port = "50092"
 	}
 
+	app := os.Getenv("APP")
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		fmt.Fprintln(w, "Hello World")
+		fmt.Fprintln(w, "Hello World, this is called from ", app)
 	})
 
 	http.HandleFunc("/ping", func(w http.ResponseWriter, r *http.Request) {
-		fmt.Fprintln(w, "pong")
+		fmt.Fprintln(w, "pong, this is called from ", app)
 	})
 
 	http.HandleFunc("/health", func(w http.ResponseWriter, r *http.Request) {
-		fmt.Fprintln(w, "ok")
+		fmt.Fprintln(w, "ok this is called from ", app)
 	})
 
 	fmt.Println("application started and listening on port ", port)
