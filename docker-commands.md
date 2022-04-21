@@ -149,3 +149,20 @@
 ### create a container attaching volume
 
 ```docker run -d --name ng3 -p 50092:80 -v myvolume:/root nginx```
+
+### Copy command from and to container
+
+- copy from host to container 
+
+```docker cp tempfile u1:/temp/```
+
+- copy from container to host
+
+```docker cp u1:/root .```
+
+
+### Build container
+
+- To build if the docker file name is Dockerfile
+
+```docker build . -t jpalaparthi/myubuntu```
