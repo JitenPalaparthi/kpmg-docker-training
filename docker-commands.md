@@ -178,3 +178,10 @@
 - puch an image with tag
 
 ```docker push jpalaparthi/myubuntu:v01```
+
+### Devops
+
+- The application code to be copied to a container and that should be compiled on the container
+- For simplicity we generate the binary and copy the binary to the container
+- To cross compile , build generate binary in go
+  - GOARCH=amd64 && GOOS=linux go build -o app main.go

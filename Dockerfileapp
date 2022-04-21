@@ -1,0 +1,22 @@
+FROM ubuntu
+
+LABEL autho="jitenp@outlook.com"
+
+LABEL version="v0.0.1"
+
+# The below command mkdir app and also cd app
+WORKDIR /app 
+
+# Copy a file from source to destination
+# COPY  app .
+
+ADD app .
+
+RUN chmod 777 app
+
+#Already we know that app works on a port 50092
+EXPOSE 50092
+
+
+ENTRYPOINT [ "./app" ]
+#CMD [ "./app" ]
