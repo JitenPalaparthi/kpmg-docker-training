@@ -1,0 +1,34 @@
+FROM ubuntu
+
+LABEL "autho"="jitenp@outlook.com"
+
+LABEL "version"="v0.0.1"
+
+RUN apt-get update -y && \
+apt-get upgrade -y && \
+apt-get install curl -y && \
+curl -OL https://golang.org/dl/go1.18.1.linux-amd64.tar.gz && \
+tar -C /usr/local -xvf go1.18.1.linux-amd64.tar.gz
+
+WORKDIR /app
+
+#COPY main.go .
+
+#COPY go.mod .
+
+COPY . .
+
+WORKDIR /usr/local/go/bin
+
+RUN ./go build -o /app/app /app/main.go
+
+WORKDIR /app
+
+ENV PORT=50092
+
+EXPOSE $PORT
+
+ENTRYPOINT [ "./app" ]
+
+
+
