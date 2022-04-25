@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: test
+  labels:
+    isApp: "false"
+
+# kubectl create -f test-namespace.yaml
+
+# kubectl apply -f test-namespace.yaml
+
