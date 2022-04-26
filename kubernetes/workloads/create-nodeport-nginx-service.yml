@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx
+  namespace: test
+spec:
+  type: NodePort
+  selector:
+    type: lb
+  ports:
+  - port: 80
+    nodePort: 32000
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx
+  labels:
+    type: lb
+  namespace: test
+spec:
+  containers:
+  - name: nginx
+    image: nginx
+    resources:
+      limits:
+        memory: "128Mi"
+        cpu: "500m"
+    ports:
+      - containerPort: 80
+# kubectl apply -f create-nginx-pod.yaml

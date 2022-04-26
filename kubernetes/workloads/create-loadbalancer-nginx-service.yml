@@ -1,0 +1,32 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx
+  namespace: test
+spec:
+  type: LoadBalancer
+  selector:
+    type: lb
+  ports:
+  - port: 8080     # The port on the service
+    targetPort: 80 # The port that is open in the POD. So service forwards to this port.
+    # nodePort: 3200 # The port that is opened on the node
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx
+  labels:
+    type: lb
+  namespace: test
+spec:
+  containers:
+  - name: nginx
+    image: nginx
+    resources:
+      limits:
+        memory: "128Mi"
+        cpu: "500m"
+    ports:
+      - containerPort: 80
+# kubectl apply -f create-nginx-pod.yaml

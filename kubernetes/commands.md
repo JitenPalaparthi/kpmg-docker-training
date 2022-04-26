@@ -34,3 +34,40 @@ or
 - To edit 
 
 ```kubectl edit ns test```
+
+- To get
+
+```kubectl get po kube-proxy-tsfv8 -n kube-system -o yaml```
+
+### Create a pod
+
+```kubectl run nginx --image=nginx -n test```
+
+### describe
+
+```kubectl describe pod/csi-azurefile-node-8vs59 -n kube-system```
+
+### POD Exec
+
+- -c means container name
+  
+```kubectl exec -it kube-proxy-tsfv8 -c kube-proxy /bin/sh -n kube-system```
+
+### Delete a pod
+
+```kubectl delete po nginx -n test```
+
+### Service Types
+
+- There are 3 kinds of service types
+  
+- ClusterIP :  The service can be accessable only inside the cluster using service IP
+- NodePort  : The servvice can be accessed using Node IP address. There is a port limitation from 30000-32768 port range. The port can either given by us or by the kubernetes if not specified.
+- LoadBalancer : The cloud provider gives the ip or url to access the services. Generally it is the most expensive option but to access the service outside of the cluster/ externally this is one of the best options.
+
+
+### Labels and Selectors
+
+- Labels are key value pairs.
+- Selectors uses the labels of other resources to select
+- 
