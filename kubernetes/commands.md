@@ -57,6 +57,10 @@ or
 
 ```kubectl delete po nginx -n test```
 
+### To Delete a Service and a Pod same time
+
+```kubectl delete services/nginx pods/nginx -n test```
+
 ### Service Types
 
 - There are 3 kinds of service types
@@ -70,4 +74,11 @@ or
 
 - Labels are key value pairs.
 - Selectors uses the labels of other resources to select
-- 
+
+### Scale a ReplicationController
+
+```kubectl scale --replicas=20 rc nginx -n test```
+
+### Auto Scale
+
+```kubectl autoscale rc nginx --min=1 --max=5 --cpu-percent=80```
