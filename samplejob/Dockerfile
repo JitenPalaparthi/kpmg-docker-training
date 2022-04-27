@@ -1,0 +1,12 @@
+FROM alpine
+
+LABEL author="JitenP@Outlook.Com"
+
+WORKDIR /app
+
+COPY app .
+
+ENTRYPOINT [ "./app" ]
+
+# TO build go lang application for alpine based images 
+# CGO_ENABLED=0 go build -a -installsuffix cgo -o app main.go

@@ -1,0 +1,15 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: samplecronjob
+  namespace: test
+spec:
+  schedule: "5 * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: samplejob
+            image: jpalaparthi/samplejob:v0.0.1
+          restartPolicy: Never
