@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: nginx-ds
+  namespace: test
+  labels:
+    app: nginx-ds
+    type: lb
+spec:
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:perl 
+        resources:
+          limits:
+           memory: "64Mi"
+           cpu: "100m"
+        ports:
+        - containerPort: 80
+
+
+    
