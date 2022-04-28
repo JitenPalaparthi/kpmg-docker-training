@@ -4,7 +4,7 @@ metadata:
   name: hello
   namespace: test
 spec:
-  schedule: "* * * * *"
+  schedule: "20 14 * * *"
   jobTemplate:
     spec:
       template:

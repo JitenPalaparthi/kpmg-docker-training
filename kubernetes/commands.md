@@ -82,3 +82,18 @@ or
 ### Auto Scale
 
 ```kubectl autoscale rc nginx --min=1 --max=5 --cpu-percent=80```
+
+
+### create a configmap from file 
+
+```kubectl create configmap  nginx-conf --from-file=nginx.conf -n test```
+
+### For testing
+
+-- secret files should be properly configured to read
+-- dont create secrets with default namespace because any body can access that namespace
+
+### CreateContainerConfigError
+  
+  - if the secret or configmap is not optional for the pod/container then unless they are created prior to the creation of the pod, the pod creation gives this error.
+  - That means some configurations are missing to create the pod [ They are either secret or configmap entities]

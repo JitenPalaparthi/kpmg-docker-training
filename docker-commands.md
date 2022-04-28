@@ -150,6 +150,10 @@
 
 ```docker run -d --name ng3 -p 50092:80 -v myvolume:/root nginx```
 
+### TO Mount a Path using docker
+
+```docker run -it --mount src="$(pwd)",target=/test_container,type=bind --name test ubuntu```
+
 ### Copy command from and to container
 
 - copy from host to container 

@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-secret-pod
+  labels:
+    app: nginx
+  namespace: test
+spec:
+  containers:
+  - name: nginx
+    image: nginx
+    resources:
+      limits:
+        memory: "128Mi"
+        cpu: "500m"
+    env:
+      - name: DB_PASSWORD
+        valueFrom:
+          secretKeyRef:
+            name: nginx-secret
+            key: db.password
+            optional: false
+      - name: DB_TOKEN
+        valueFrom:
+          secretKeyRef: 
+            name: nginx-secret
+            key: db.token
+            optional: false
+    ports:
+      - containerPort: 80
