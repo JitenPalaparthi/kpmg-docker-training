@@ -27,5 +27,5 @@ func main() {
 	})
 
 	fmt.Println("application started and listening on port ", port)
-	http.ListenAndServe(":"+port, nil)
+	fmt.Println(http.ListenAndServe(":"+port, nil))
 }
