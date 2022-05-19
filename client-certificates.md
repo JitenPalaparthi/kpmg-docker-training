@@ -6,15 +6,27 @@
 
 ```kubectl get secret my-cluster-cluster-ca-cert -n my-kafka-project -o jsonpath='{.data.ca\.crt}' | base64 -d > ca.crt```
 
-```kubectl get secret my-cluster-cluster-ca-cert -n my-kafka-project -o jsonpath='{.data.ca\.password}' | base64 -d > ca.password```
+- Keystore path is java security path. If there are many java versions running in yoru system, you should use proper path.
 
-- for java clients  to store the ca.crt use keytool keystore
+```sudo keytool --importcert --alias strimzi-kafka-cert -file /home/jiten/kafka/kafka_2.12-3.1.0/bin/certs/ca.crt -keystore /usr/lib/jvm/java-1.11.0-openjdk-amd64/lib/security/cacerts```
 
--- /etc/ssl/certs/java/cacerts
+```sudo keytool --importcert --alias strimzi-kafka-cert -file /home/jiten/kafka/kafka_2.12-3.1.0/bin/certs/ca.crt -keystore /etc/ssl/certs/java/cacerts```
 
-```sudo keytool --importcert --alias strimzi-kafka-cert -file ca.crt -keystore /etc/ssl/certs/java/cacerts -keypass igIHnWyXPxst```
+-To delete the certificate
+
+```sudo keytool -delete -alias strimzi-kafka-cert  -keystore /etc/ssl/certs/java/cacerts```
 
 
 - to check whether the certificate is stored or not 
   
   ```sudo keytool -list -alias strimzi-kafka-cert -keystore /etc/ssl/certs/java/cacerts```
+
+- If there are any ssl issues from consumer or producer particularly when using java based kafka clients, enable the below logs.
+- 
+```export KAFKA_OPTS="-Djavax.net.debug=ssl"```
+
+- To use golang test application setup the below environment variables w.r.t your setup
+
+```export KAFKA_BOOTSTRAP_SERVERS=192.168.49.2:30405```
+```export CA_CERT_LOCATION=/home/jiten/workspace/personal/kpmg-docker-training/kafka-go-client/ca.crt```
+```export KAFKA_TOPIC=my-topic```
