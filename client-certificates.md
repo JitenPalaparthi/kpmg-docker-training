@@ -25,7 +25,7 @@
 - 
 ```export KAFKA_OPTS="-Djavax.net.debug=ssl"```
 
-- To use golang test application setup the below environment variables w.r.t your setup
+- To use golang test application setup the below environment variables w.r.t your setup.The name of the application is kafka-go-client it is already in this directory
 
 ```export KAFKA_BOOTSTRAP_SERVERS=192.168.49.2:30405```
 ```export CA_CERT_LOCATION=/home/jiten/workspace/personal/kpmg-docker-training/kafka-go-client/ca.crt```
